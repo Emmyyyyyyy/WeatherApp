@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+body {
+    height: 100vh;
+    background-color: #CBE4DE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0E8388;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    border-radius: 25px;
+    width: 21rem;
+    height: 30rem;
+    border: none;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: 200ms;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+}
+
+.flip {
+    --rotate-y: -180deg;
+}
+
+.back-card, .front-card {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.back-card {
+    transform: rotateY(180deg);
+}
+
+.circle-button {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.front {
+    background: rgba(14, 131, 136);
+}
+
+.back {
+    background: white;
+}
+
+.back:hover {
+    background: rgba(14, 131, 136, 0.25);
+}
+
+.button {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.lang {
+    outline: solid #0E8388;
+    outline-width: 1.5px;
+    border-radius: 0.6rem;
+    position: absolute;
+    top: 1.2rem;
+    right: 14.6rem;
+    width: 2rem;
+    text-align: center;
+    color: #0E8388;
+    padding: 0.25rem;
+}
+
+.lang-text {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.time {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.SearchBar {
+    position: fixed;
+    z-index: 100;
+}
+
+.form-control {
+    border-radius: 0.75rem;
+    color: rgba(14, 131, 136, 0.4);
+    border: 1px solid#0E8388;
+}
