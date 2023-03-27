@@ -19,9 +19,9 @@ export const Header = () => {
     // }
 
     return (
-        <>
+        <div className="header">
             <p>{day}, {date} {month} {year}</p>
             <p className="time">{time}</p>
-        </>
+        </div>
     )
 }

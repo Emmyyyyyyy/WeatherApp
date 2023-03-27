@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { Header } from "./components/header";
 import { Lang } from "./components/Lang";
+import { SearchBar } from "./components/searchBar";
+import weatherPic from "./static/images/02d@2x.png"
 
 import "./App.css"
-import { SearchBar } from "./components/searchBar";
+
 
 export default function App() {
   const [flip, setFlip] = useState(false)
@@ -13,9 +15,12 @@ export default function App() {
     <>
       <Card className={flip ? "flip" : ""} onClick={() => setFlip(!flip)}>
         <div className="front-card">
-          <Lang/>
-          <Header/>
-          <SearchBar/>
+          <Lang />
+          <div className="center-context">
+            <Header />
+            <SearchBar />
+            <img src={weatherPic} className="weather-pic" />
+          </div>
         </div>
         <div className="back-card">
           <Lang/>
