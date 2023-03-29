@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { Header } from "./components/header";
 import { Lang } from "./components/Lang";
 import { SearchBar } from "./components/searchBar";
+import { Info } from "./components/info";
 import weatherPic from "./static/images/02d@2x.png"
 
 import "./App.css"
@@ -20,6 +21,7 @@ export default function App() {
             <Header />
             <SearchBar />
             <img src={weatherPic} className="weather-pic" />
+            <Info />
           </div>
         </div>
         <div className="back-card">

@@ -10,14 +10,19 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+p {
+    margin: 0;
+    text-align: center;
+}
+
 .card {
     border-radius: 25px;
     width: 21rem;
     height: 30rem;
     border: none;
     padding: 1.25rem;
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    /* align-items: center; */
     transform-style: preserve-3d;
     transition: 200ms;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
@@ -28,6 +33,7 @@ body {
 }
 
 .back-card, .front-card {
+    height: 100%;
     backface-visibility: hidden;
 }
 
@@ -80,8 +86,8 @@ body {
 }
 
 .btn {
-    border-radius: 0.9rem;
-    padding: 0.45rem;
+    border-radius: 0.85rem;
+    padding: 0.4rem;
     color: #0E8388;
     background-color: white;
     border-color: #0E8388;
@@ -92,20 +98,30 @@ body {
     border-color: #0E8388;
 }
 
-.time {
+.time, .temp {
     font-weight: 700;
     font-size: 2rem;
+    margin-top: 0.25rem;
+}
+
+.country {
+    font-size: 2.05rem;
 }
 
 .form-control {
     border-radius: 0.9rem;
     color: rgba(14, 131, 136, 0.4);
-    border: 1px solid#0E8388;
+    border: 1px solid #0E8388;
     width: 85%;
+    margin-top: 0.75rem;
 }
 
-p {
-    text-align: center;
+.form-control::placeholder {
+    color: rgba(14, 131, 136, 0.4);
+}
+
+.form-control:focus {
+    color: rgba(14, 131, 136);
 }
 
 .dropdown-toggle::after {
