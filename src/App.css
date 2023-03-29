@@ -122,8 +122,67 @@ p {
 
 .form-control:focus {
     color: rgba(14, 131, 136);
+    border-color: rgba(14, 131, 136, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(14, 131, 136, 0.25);
 }
 
 .dropdown-toggle::after {
     display: none; 
+}
+
+.dropdown-menu {
+    border-radius: 0.85rem;
+    padding: 0;
+    border-color: #0E8388;
+}
+
+.dropdown-item {
+    color: #0E8388;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(14, 131, 136, 0.1);
+    border-radius: 0.85rem;
+}
+
+.dropdown-item.active {
+    border-radius: 0.85rem;
+    background-color: #0E8388;
+}
+
+.dropdown-item:active {
+    border-radius: 0.85rem;
+    background-color: rgba(14, 131, 136, 0.1);
+    color: #0E8388;
+}
+
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #0E8388;
+    border-color: rgba(14, 131, 136, 0.1);
+}
+
+.btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(14, 131, 136, 0.25);
+}
+
+.btn-success.focus, .btn-success:focus {
+    box-shadow: none;
+}
+
+.dropdown-item:hover {
+    color: #0E8388;
+}
+
+:focus-visible {
+    outline: none;
+}
+
+.dropdown-item:hover.active{
+    color: white;
+}
+
+.dropdown-item:active.active {
+    background-color: #0E8388;
+    color: white;
 }
