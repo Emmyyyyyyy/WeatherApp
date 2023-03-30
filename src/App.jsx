@@ -16,7 +16,7 @@ export default function App() {
   // className={flip ? "flip" : ""} onClick={() => setFlip(!flip)}
   return (
     <>
-      <Card>
+      <Card className={flip ? "flip" : ""}>
         <div className="front-card">
           <Lang flip={flip} />
           <div className="center-context">
