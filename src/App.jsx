@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-template-curly-in-string */
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
@@ -12,11 +13,12 @@ import "./App.css"
 
 export default function App() {
   const [flip, setFlip] = useState(false)
+  // className={flip ? "flip" : ""} onClick={() => setFlip(!flip)}
   return (
     <>
-      <Card className={flip ? "flip" : ""} onClick={() => setFlip(!flip)}>
+      <Card>
         <div className="front-card">
-          <Lang />
+          <Lang flip={flip} />
           <div className="center-context">
             <Header />
             <SearchBar />
@@ -25,7 +27,7 @@ export default function App() {
           </div>
         </div>
         <div className="back-card">
-          <Lang/>
+          <Lang flip={flip} />
           <Header/>
           <SearchBar/>
         </div>
