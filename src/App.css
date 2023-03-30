@@ -47,6 +47,7 @@ p {
     height: 20px;
     border-radius: 50%;
     display: inline-block;
+    cursor: pointer;
 }
 
 .header {
@@ -99,6 +100,64 @@ p {
     border-color: #0E8388;
 }
 
+.more-info-btn {
+    position: absolute;
+    right: 1.25rem;
+    cursor: pointer;
+}
+
+.unit-btn-box {
+    display: inline-block;
+    
+}
+
+.unit-btn {
+    display: inline-block;
+    padding: 0;
+    color: black;
+    width: fit-content;
+    border: none;
+}
+
+.unit-btn:hover {
+    background-color: transparent;
+}
+
+.unit-btn-box.show>.btn-success.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.unit-btn-box.show>.btn-success.dropdown-toggle {
+    background-color: transparent;
+    border-color: rgba(14, 131, 136, 0.1);
+}
+
+.unit-btn.btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: transparent;
+    border-color: rgba(14, 131, 136, 0.1);
+}
+
+.temp-box {
+    display: flex;
+    align-items: center;
+}
+
+.plus-pic, .minus-pic {
+    width: 1.5rem;
+    margin-top: 0.45rem;
+    transition-property: transform;
+    transition-duration: 0.3s;
+}
+
+.plus-pic:hover {
+    transform: rotate(90deg);
+}
+
+.minus-pic:hover {
+    transform: rotate(-180deg);
+}
+
 .time, .temp {
     font-weight: 700;
     font-size: 2rem;
@@ -107,6 +166,20 @@ p {
 
 .country {
     font-size: 2.05rem;
+}
+
+.temp {
+    display: inline-block;
+}
+
+.chevron {
+    width: 1.25rem;
+    transition-property: transform;
+    transition-duration: 0.3s;
+}
+
+.chevron-selected {
+    transform: rotate(-180deg);
 }
 
 .form-control {

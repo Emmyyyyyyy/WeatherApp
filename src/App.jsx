@@ -6,7 +6,8 @@ import { Header } from "./components/header";
 import { Lang } from "./components/Lang";
 import { SearchBar } from "./components/searchBar";
 import { Info } from "./components/info";
-import weatherPic from "./static/images/02d@2x.png"
+import { MoreInfoButton } from "./components/moreInfoButton";
+import weatherPic from "./static/images/02d@2x.png";
 
 import "./App.css"
 
@@ -19,6 +20,7 @@ export default function App() {
       <Card className={flip ? "flip" : ""}>
         <div className="front-card">
           <Lang flip={flip} />
+          <MoreInfoButton />
           <div className="center-context">
             <Header />
             <SearchBar />
@@ -32,6 +34,7 @@ export default function App() {
           <SearchBar/>
         </div>
       </Card>
+      
       <div className="button">
         <span className={flip ? "circle-button back" : "circle-button front"} onClick={() => flip ? setFlip(!flip) : '' } style={{marginRight:"1rem"}}></span>
         <span className={flip ? "circle-button front" : "circle-button back"} onClick={() => !flip ? setFlip(!flip) : '' }></span>
