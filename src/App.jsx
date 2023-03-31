@@ -18,7 +18,7 @@ export default function App() {
   return (
     <>
       <Card className={flip ? "flip" : ""}>
-        <div className="front-card">
+        <div className={flip ? "front-card flip flip" : "front-card flip"}>
           <Lang flip={flip} />
           <MoreInfoButton />
           <div className="center-context">
@@ -29,12 +29,17 @@ export default function App() {
           </div>
         </div>
         <div className="back-card">
-          <Lang flip={flip} />
-          <Header/>
-          <SearchBar/>
+        <Lang flip={flip} />
+          <MoreInfoButton />
+          <div className="center-context">
+            <Header />
+            <SearchBar />
+            <img src={weatherPic} className="weather-pic" />
+            <Info />
+          </div>
         </div>
       </Card>
-      
+
       <div className="button">
         <span className={flip ? "circle-button back" : "circle-button front"} onClick={() => flip ? setFlip(!flip) : '' } style={{marginRight:"1rem"}}></span>
         <span className={flip ? "circle-button front" : "circle-button back"} onClick={() => !flip ? setFlip(!flip) : '' }></span>

@@ -21,6 +21,7 @@ p {
     height: 30rem;
     border: none;
     padding: 1.25rem;
+    position: relative;
     display: flex;
     /* align-items: center; */
     transform-style: preserve-3d;
@@ -29,15 +30,17 @@ p {
 }
 
 .flip {
-    /* --rotate-y: -180deg; */
+    z-index: 0;
+    --rotate-y: -180deg;
 }
 
 .back-card, .front-card {
-    height: 100%;
     backface-visibility: hidden;
 }
 
 .back-card {
+    position: relative;
+    bottom: 26.1rem;
     transform: rotateY(180deg);
 }
 
@@ -260,3 +263,8 @@ p {
     background-color: #0E8388;
     color: white;
 }
+
+.back-card > .more-info-btn {
+    right: 0;
+}
+
