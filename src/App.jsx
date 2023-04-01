@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-template-curly-in-string */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Header } from "./components/header";
 import { Lang } from "./components/Lang";
@@ -14,7 +14,24 @@ import "./App.css"
 
 export default function App() {
   const [flip, setFlip] = useState(false)
-  // className={flip ? "flip" : ""} onClick={() => setFlip(!flip)}
+  const [storeData, setStoreData] = useState({})
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      const weatherData = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Bangkok&appid=33e89e9f5985c4a59d8060e8f122b223&units=metric", {
+        method: "GET"
+      });
+      const weatherInfo = await weatherData.json();
+      setStoreData(weatherInfo)
+    }
+    const intervalId = setInterval(fetchData, 1000);
+    return () => clearInterval(intervalId);
+    // fetchData();
+  }, [])
+
+  const weather = storeData?.weather?.[0]?.description
+  console.log(weather?.[0]?.description)
+
   return (
     <>
       <Card className={flip ? "flip" : ""}>
@@ -25,7 +42,7 @@ export default function App() {
             <Header />
             <SearchBar />
             <img src={weatherPic} className="weather-pic" />
-            <Info />
+            <Info city={storeData?.name} temp={storeData?.main?.temp} desc={storeData?.weather?.[0]?.description}/>
           </div>
         </div>
         <div className="back-card">

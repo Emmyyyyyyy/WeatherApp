@@ -5,6 +5,7 @@ export const SearchBar = () => {
     return (
         <>
             <Form.Control type="text" placeholder="Search Country" />
+            <div className="go-btn"><p>GO</p></div>
         </>
     )
 }

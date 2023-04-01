@@ -109,11 +109,6 @@ p {
     cursor: pointer;
 }
 
-.unit-btn-box {
-    display: inline-block;
-    
-}
-
 .unit-btn {
     display: inline-block;
     padding: 0;
@@ -138,7 +133,22 @@ p {
 .unit-btn.btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
     color: #fff;
     background-color: transparent;
-    border-color: rgba(14, 131, 136, 0.1);
+    border-color: rgba(33, 35, 35, 0.1);
+}
+
+.go-btn {
+    width: 1.65rem;
+    height: 1.65rem;
+    background-color: rgba(14, 131, 136, 0.4);
+    position: absolute;
+    display: flex;
+    top: 7.55rem;
+    right: 3rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.7rem;
+    justify-content: center;
+    align-items: center;   
 }
 
 .temp-box {
@@ -266,5 +276,10 @@ p {
 
 .back-card > .more-info-btn {
     right: 0;
+}
+
+.back-card > .center-context > .go-btn {
+    top: 6.3rem;
+    right: 1.75rem;
 }
 

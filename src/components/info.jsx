@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
 
-export const Info = () => {
+export const Info = (props) => {
     const [selected, setSelected] = useState(false)
     const [selectedUnit, setSelectedUnit] = useState("EN");
 
@@ -11,11 +11,14 @@ export const Info = () => {
         setSelectedUnit(eventKey);
     }
 
+    var roundNum = Math.round((props.temp) * 10) / 10;
+    console.log(roundNum);
+
     return (
         <>
-            <p className="country">Thailand</p>
+            <p className="country">{props.city}</p>
             <div className='temp-box'>
-                <p className="temp">37 C</p>
+                <p className="temp">{roundNum} C</p>
                 <Dropdown className="unit-btn-box" onClick={() => setSelected(!selected)}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" className="unit-btn">
                     <img src={chevron} className={selected ? "chevron chevron-selected" : "chevron"}/>
@@ -34,7 +37,7 @@ export const Info = () => {
                 </Dropdown>
             </div>
             
-            <p>Few Clouds</p>
+            <p>{props.desc}</p>
         </>
     )
 }
