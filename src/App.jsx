@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-template-curly-in-string */
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { Header } from "./components/header";

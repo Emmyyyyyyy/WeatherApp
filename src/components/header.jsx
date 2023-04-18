@@ -4,6 +4,7 @@ export const Header = () => {
     const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
            setInterval(() => setDateState(new Date()), 30000);
+        //    console.log("hello");
     }, []);
 
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
