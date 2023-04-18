@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 export const Header = () => {
     const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
-           setInterval(() => setDateState(new Date()), 30000);
-        //    console.log("hello");
-    }, []);
+        const interval = setInterval(() => {
+            setDateState(new Date()), 30000});
+        return () => clearInterval(interval);
+    }, [dateState]);
 
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const monthString = ["January","February","March","April","May","June","July","August","September","October","November","December"];

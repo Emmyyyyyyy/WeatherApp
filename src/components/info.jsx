@@ -6,9 +6,11 @@ import weatherPic from "../static/images/02d@2x.png";
 
 
 export const Info = (props) => {
-    const [selected, setSelected] = useState(false)
+    const [selected, setSelected] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("°C");
-    const [storeData, setStoreData] = useState({})
+    const [storeData, setStoreData] = useState({});
+    const [roundNum, setRoundNum] = useState(0);
+    var temp = 0;
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -20,15 +22,24 @@ export const Info = (props) => {
         }
         const intervalId = setInterval(fetchData, 1000);
         return () => clearInterval(intervalId);
-        // fetchData();
     }, [])
+
+    useEffect(()=>{
+        temp = storeData?.main?.temp
+        if(selectedUnit === "°C") {
+            setRoundNum(Math.round((temp) * 10) / 10)
+        }
+        else if(selectedUnit === "K") {
+            setRoundNum(Math.round((temp+273) * 10) / 10)
+        }
+        else if(selectedUnit === "°F") {
+            setRoundNum(Math.round(((temp+(9/5))+32) * 10) / 10)
+        }
+    }, [storeData, selectedUnit])
 
     const handlerSelect = (eventKey, event) => {
         setSelectedUnit(eventKey);
     }
-
-    var roundNum = Math.round((storeData?.main?.temp) * 10) / 10;
-    console.log(roundNum);
 
     return (
         <>
