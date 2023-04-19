@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
-import weatherPic from "../static/images/02d@2x.png";
+// import weatherPic from "../static/images/02d@2x.png";
 
 
 export const Info = (props) => {
@@ -10,6 +10,7 @@ export const Info = (props) => {
     const [selectedUnit, setSelectedUnit] = useState("°C");
     const [storeData, setStoreData] = useState({});
     const [roundNum, setRoundNum] = useState(0);
+    const [weatherIcon, setWeatherIcon] = useState('');
     var temp = 0;
 
     useEffect(()=>{
@@ -26,6 +27,8 @@ export const Info = (props) => {
 
     useEffect(()=>{
         temp = storeData?.main?.temp
+        const icon = storeData?.weather?.[0]?.icon;
+        setWeatherIcon(icon)
         if(selectedUnit === "°C") {
             setRoundNum(Math.round((temp) * 10) / 10)
         }
@@ -43,7 +46,7 @@ export const Info = (props) => {
 
     return (
         <>
-            <img src={weatherPic} className="weather-pic" />
+            <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"} className="weather-pic" />
             <p className="country">{storeData?.name}</p>
             <div className='temp-box'>
                 <p className="temp">{roundNum} {selectedUnit}</p>
