@@ -2,7 +2,7 @@
 
 This is a simple weather app built using React and Bootstrap. It allows users to search for the weather of a location and provides them with the current weather conditions along with additional information such as temperature, humidity, wind speed, and PM 2.5 condition. Additionally, it supports changing the language and temperature unit.
 
-![Screenshot of the app.](./src/static/pic/wholePage.png)
+![Screenshot of the app.](./src/static/images/wholePage.png)
 
 ## Features
 
@@ -13,9 +13,9 @@ This is a simple weather app built using React and Bootstrap. It allows users to
 - Supports changing the temperature unit
 - Easy-to-use interface
 
-![Change language.](./src/static/pic/changeLang.png)
+![Change language.](./src/static/images/changeLang.png)
 
-![Change temperature unit.](./src/static/pic/changeTempUnit.png)
+![Change temperature unit.](./src/static/images/changeTempUnit.png)
 
 ## Installation
 
