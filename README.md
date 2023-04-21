@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple weather app built using React and Bootstrap. It allows users to search for the weather of a location and provides them with the current weather conditions along with additional information such as temperature, humidity, wind speed, and PM 2.5 condition. Additionally, it supports changing the language and temperature unit.
 
-## Available Scripts
+![Screenshot of the app.](./src/static/pic/wholePage.png)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Search for the weather of a location
+- Displays current weather conditions
+- Displays additional weather information such as temperature, humidity, wind speed, and PM 2.5 condition
+- Supports changing the language
+- Supports changing the temperature unit
+- Easy-to-use interface
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Change language.](./src/static/pic/changeLang.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Change temperature unit.](./src/static/pic/changeTempUnit.png)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To install and run this app on your local machine, follow these steps:
 
-### `npm run build`
+1. Clone the repository to your local machine
+2. Navigate to the project directory using the terminal
+3. Run the command 'npm install' to install all the required dependencies
+4. Run the command 'npm start' to start the app
+5. Open your browser and go to 'http://localhost:3000/'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To use the app, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Enter the name of a location in the search bar
+2. Press the search button
+3. The app will display the current weather conditions along with additional information such as temperature, humidity, wind speed, and PM 2.5 condition
+4. To see the PM 2.5 condition, flip the card by clicking on the circular button at the bottom of the screen
+5. To change the language, click on the language dropdown and select your preferred language
+6. To change the temperature unit, click on the temperature unit dropdown and select your preferred unit
