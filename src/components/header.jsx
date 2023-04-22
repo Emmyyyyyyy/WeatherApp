@@ -4,6 +4,7 @@ export const Header = () => {
     const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
         const interval = setInterval(() => {
+            // eslint-disable-next-line no-unused-expressions
             setDateState(new Date()), 30000});
         return () => clearInterval(interval);
     }, [dateState]);

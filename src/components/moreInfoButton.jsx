@@ -5,7 +5,6 @@ import minus from "../static/images/minus.png";
 
 const infobtn = {plus, minus};
 
-
 export const MoreInfoButton = () => {
     const [selected, setSelected] = useState(false)
     const [info, setInfo] = useState(infobtn.plus)
