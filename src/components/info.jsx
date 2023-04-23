@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
+import goodIcon from "../static/images/smile.png"
 // import weatherPic from "../static/images/02d@2x.png";
 
 
