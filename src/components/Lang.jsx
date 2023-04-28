@@ -17,12 +17,12 @@ export const Lang = () => {
                 <Dropdown.Item eventKey="EN" active={selectedLang === "EN"} onClick={(event) => handlerSelect("EN", event)}>
                     English
                 </Dropdown.Item>
-                <Dropdown.Item eventKey="JP" active={selectedLang === "JP"} onClick={(event) => handlerSelect("JP", event)}>
+                {/* <Dropdown.Item eventKey="JP" active={selectedLang === "JP"} onClick={(event) => handlerSelect("JP", event)}>
                     Japanese
                 </Dropdown.Item>
                 <Dropdown.Item eventKey="ES" active={selectedLang === "ES"} onClick={(event) => handlerSelect("ES", event)}>
                     Spanish
-                </Dropdown.Item>
+                </Dropdown.Item> */}
                 <Dropdown.Item eventKey="TH" active={selectedLang === "TH"} onClick={(event) => handlerSelect("TH", event)}>
                     Thai
                 </Dropdown.Item>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export const Header = () => {
     const [dateState, setDateState] = useState(new Date());
+
     useEffect(() => {
         const interval = setInterval(() => {
             // eslint-disable-next-line no-unused-expressions
@@ -19,13 +20,7 @@ export const Header = () => {
     var year = dateState.getFullYear();
     var time = dateState.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     time = time.replace('PM', 'P.M.').replace('AM', 'A.M.')
-
-    // if(newDate.getHours() > 12){
-    //     unit = 'P.M.'
-    // } else {
-    //     unit = 'A.M.'
-    // }
-
+    
     return (
         <div className="header">
             <p>{day}, {date} {month} {year}</p>

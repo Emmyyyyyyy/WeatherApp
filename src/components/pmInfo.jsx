@@ -7,26 +7,16 @@ import unhealthyIcon from "../static/images/sad-face.png"
 import veryUnhealthyIcon from "../static/images/angry.png"
 import hazardousIcon from "../static/images/halo.png"
 import loadingIcon from "../static/images/loading-bar.png"
-// import { fetchPMData } from "../services/pm2.5API";
 
 const Icon = {loadingIcon, goodIcon, moderateIcon, unhealthyForSomeGroupIcon, unhealthyIcon, veryUnhealthyIcon, hazardousIcon};
-// const statusColor = {"ABC270", }
 
 export const PMInfo = (props) => {
-    // const [storeData, setStoreData] = useState({});
     const [level, setLevel] = useState('')
     const [statusIcon, setStatusIcon] = useState(Icon.loadingIcon);
     const [circleColor, setInnerCircleColor] = useState('rgba(14, 131, 136, 0.4)');
     const [pmValue, setpmValue] = useState('')
 
-    // useEffect(() => {
-    //   fetchPMData(setStoreData);
-    // }, []);
-
-    // console.log(storeData)
-
     useEffect(()=>{
-      // const pm = storeData?.data?.current?.pollution?.aqius;
       setpmValue(props.pmValue);
   
       if (props.pmValue <= 50) {

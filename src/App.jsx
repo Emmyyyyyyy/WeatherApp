@@ -24,6 +24,13 @@ export default function App() {
   const [cardWidth, setCardWidth] = useState("21rem");
   const [storeWeatherData, setStoreWeatherData] = useState(null);
   const [storePMdata, setStorePMdata] = useState(null);
+  const [isNight, setIsNight] = useState(false);
+  const date = new Date();
+
+  const hours = date.getHours();
+    useEffect(() => {
+    setIsNight(hours >= 18 || hours < 6);
+  }, [hours]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -49,7 +56,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="Wrapper" style={{ background: isNight ? '#2E4F4F' : '#CBE4DE'}}>
       <Card className={flip ? "flip" : ""} style={{ width: cardWidth }}>
         <div className={flip ? "front-card flip" : "front-card"}>
           <div className="leftContent">
@@ -91,6 +98,6 @@ export default function App() {
         <span className={flip ? "circle-button back" : "circle-button front"} onClick={() => flip ? setFlip(!flip) : '' } style={{marginRight:"1rem"}}></span>
         <span className={flip ? "circle-button front" : "circle-button back"} onClick={() => !flip ? setFlip(!flip) : '' }></span>
       </div>
-    </>
+    </div>
   )
 }
