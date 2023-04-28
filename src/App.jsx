@@ -6,15 +6,16 @@ import { SearchBar } from "./components/searchBar";
 import { Info } from "./components/info";
 import { PMInfo } from "./components/pmInfo";
 import { fetchWeatherData } from "./services/weatherAPI";
+import { fetchPMData } from "./services/pm2.5API";
+import { MoreWeatherInfo } from "./components/moreWeatherInfo";
+import { MorePMinfo } from "./components/morePMinfo";
 
 import "./App.css"
 
 import plus from "./static/images/plus (1).png";
 import minus from "./static/images/minus.png";
-import { MoreWeatherInfo } from "./components/moreWeatherInfo";
 
 const infobtn = {plus, minus};
-
 
 export default function App() {
   const [flip, setFlip] = useState(false)
@@ -22,11 +23,13 @@ export default function App() {
   const [info, setInfo] = useState(infobtn.plus)
   const [cardWidth, setCardWidth] = useState("21rem");
   const [storeWeatherData, setStoreWeatherData] = useState(null);
+  const [storePMdata, setStorePMdata] = useState(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchWeatherData(setStoreWeatherData);
     }, 1000);
+    fetchPMData(setStorePMdata);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -44,8 +47,6 @@ export default function App() {
   function selectedHandler(){
     setSelected(!selected)
   }
-  
-  console.log(storeWeatherData)
 
   return (
     <>
@@ -76,20 +77,13 @@ export default function App() {
             <div className="center-context">
               <Header />
               <SearchBar />
-              <PMInfo />
+              <PMInfo pmValue={storePMdata?.data?.current?.pollution?.aqius} currentState={storePMdata?.data?.state}/>
             </div>
           </div>
-          {selected && (
-            <div className="rightContentWrapper">
+            <div className={`rightContentWrapper ${selected ? 'expanded' : ''}`}>
               <div className="devidedLine" />
-              <div className="rightContent">
-                <div className="suggestion">
-                  <p className="suggestionText">Suggestion</p>
-                  <p>Active children and adults, and people with respiratory, such as asthma, should limit prolonged outdoor exertion.</p>
-                </div>
-              </div>
+              <MorePMinfo pmValue={storePMdata?.data?.current?.pollution?.aqius}/>
             </div>
-          )}
         </div>
       </Card>
 
