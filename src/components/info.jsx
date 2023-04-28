@@ -2,53 +2,34 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
-import goodIcon from "../static/images/smile.png"
-// import weatherPic from "../static/images/02d@2x.png";
-
 
 export const Info = (props) => {
     const [selected, setSelected] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("°C");
-    const [storeData, setStoreData] = useState({});
     const [roundNum, setRoundNum] = useState(0);
     const [weatherIcon, setWeatherIcon] = useState('');
-    var temp = 0;
 
     useEffect(()=>{
-        const fetchData = async () => {
-        const weatherData = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Bangkok&appid=33e89e9f5985c4a59d8060e8f122b223&units=metric", {
-            method: "GET"
-        });
-        const weatherInfo = await weatherData.json();
-        setStoreData(weatherInfo)
-        }
-        const intervalId = setInterval(fetchData, 1000);
-        return () => clearInterval(intervalId);
-    }, [])
-
-    useEffect(()=>{
-        temp = storeData?.main?.temp
-        const icon = storeData?.weather?.[0]?.icon;
-        setWeatherIcon(icon)
+        setWeatherIcon(props.weatherIcon)
         if(selectedUnit === "°C") {
-            setRoundNum(Math.round((temp) * 10) / 10)
+            setRoundNum(Math.round((props.temp) * 10) / 10)
         }
         else if(selectedUnit === "K") {
-            setRoundNum(Math.round((temp+273) * 10) / 10)
+            setRoundNum(Math.round((props.temp+273) * 10) / 10)
         }
         else if(selectedUnit === "°F") {
-            setRoundNum(Math.round(((temp+(9/5))+32) * 10) / 10)
+            setRoundNum(Math.round(((props.temp+(9/5))+32) * 10) / 10)
         }
-    }, [storeData, selectedUnit])
+    }, [selectedUnit, props.weatherIcon, props.temp])
 
-    const handlerSelect = (eventKey, event) => {
+    const handlerSelect = (eventKey) => {
         setSelectedUnit(eventKey);
     }
-
+    
     return (
         <>
-            <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"} className="weather-pic" />
-            <p className="country">{storeData?.name}</p>
+            <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@4x.png"} className="weather-pic" />
+            <p className="country">{props.country}</p>
             <div className='temp-box'>
                 <p className="temp">{roundNum} {selectedUnit}</p>
                 <Dropdown className="unit-btn-box" onClick={() => setSelected(!selected)}>
@@ -69,7 +50,7 @@ export const Info = (props) => {
                 </Dropdown>
             </div>
             
-            <p>{storeData?.weather?.[0]?.description}</p>
+            <p>{props.weatherDescription}</p>
         </>
     )
 }

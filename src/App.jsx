@@ -8,6 +8,7 @@ import { PMInfo } from "./components/pmInfo";
 import humidityIcon from "./static/images/humidity-2.png"
 import windSpeedIcon from "./static/images/wind.png"
 import cloudIcon from "./static/images/cloud.png"
+import { fetchWeatherData } from "./services/weatherAPI";
 
 import "./App.css"
 
@@ -22,31 +23,34 @@ export default function App() {
   const [selected, setSelected] = useState(false)
   const [info, setInfo] = useState(infobtn.plus)
   const [cardWidth, setCardWidth] = useState("21rem");
-  // const [rightContentWidth, setRightContentWidth] = useState("0")
+  const [storeWeatherData, setStoreWeatherData] = useState(null);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchWeatherData(setStoreWeatherData);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(()=>{
     if(selected){
       setInfo(infobtn.minus)
       setCardWidth("37rem");
-      // setRightContentWidth("auto")
     }
     else{
       setInfo(infobtn.plus)
       setCardWidth("21rem")
-      // setRightContentWidth("0")
     }
-    // console.log(selected)
   }, [selected])
 
   function selectedHandler(){
     setSelected(!selected)
   }
 
-
   return (
     <>
       <Card className={flip ? "flip" : ""} style={{ width: cardWidth }}>
-        <div className={flip ? "front-card flip flip" : "front-card flip"}>
+        <div className={flip ? "front-card flip" : "front-card"}>
           <div className="leftContent">
             <Lang flip={flip} />
             <div className="more-info-btn">
@@ -55,11 +59,11 @@ export default function App() {
             <div className="center-context">
               <Header />
               <SearchBar />
-              <Info />
+              <Info temp={storeWeatherData?.main?.temp} weatherIcon={storeWeatherData?.weather?.[0]?.icon} country={storeWeatherData?.name} weatherDescription={storeWeatherData?.weather?.[0]?.description}/>
             </div>
           </div>
-          {selected && (
-            <div className="rightContentWrapper">
+          {/* {selected && ( */}
+            <div className={`rightContentWrapper ${selected ? 'expanded' : ''}`}>
               <div className="devidedLine" />
               <div className="rightContent">
                 <div className="content">
@@ -79,7 +83,7 @@ export default function App() {
                 </div>
               </div>
             </div>
-          )}
+          {/* )} */}
         </div>
         <div className="back-card">
           <div className="leftContent">
@@ -97,20 +101,9 @@ export default function App() {
             <div className="rightContentWrapper">
               <div className="devidedLine" />
               <div className="rightContent">
-                <div className="content">
-                  <img src={humidityIcon} alt="humidityIcon" className="catagoryIcon"/>
-                  <p className="catagory">Humidity</p>
-                  <p className="value">64</p>
-                </div>
-                <div className="content">
-                  <img src={windSpeedIcon} alt="windSpeedIcon" className="catagoryIcon"/>
-                  <p className="catagory">Wind Speed</p>
-                  <p className="value">0.62</p>
-                </div>
-                <div className="content">
-                  <img src={cloudIcon} alt="cloudIcon" className="catagoryIcon"/>
-                  <p className="catagory">Cloud</p>
-                  <p className="value">100</p>
+                <div className="suggestion">
+                  <p className="suggestionText">Suggestion</p>
+                  <p>Active children and adults, and people with respiratory, such as asthma, should limit prolonged outdoor exertion.</p>
                 </div>
               </div>
             </div>
