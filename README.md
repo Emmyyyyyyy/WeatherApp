@@ -38,3 +38,11 @@ To use the app, follow these steps:
 6. Click on the plus sign to see suggestion.
 7. To change the language, click on the language dropdown and select your preferred language
 8. To change the temperature unit, click on the temperature unit dropdown and select your preferred unit
+
+## Tools and Technologies Used
+
+- React.js
+- Bootstrap
+- OpenWeatherMap API
+- AirVisual API
+- Figma (for UI design) : https://shorturl.at/qzU09
