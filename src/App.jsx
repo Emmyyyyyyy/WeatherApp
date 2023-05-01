@@ -32,6 +32,9 @@ export default function App() {
   const [isNight, setIsNight] = useState(false);
   const [input, setInput] = useState('')
   const [state, setState] = useState('bangkok')
+  const [filteredStates, setFilteredStates] = useState([]);
+
+
   const date = new Date();
   const hours = date.getHours();
   const states = State.getAllStates();
@@ -49,7 +52,7 @@ export default function App() {
     return () => clearInterval(intervalId);
   }, [state]);
 
-  // console.log(storeWeatherData)
+  // console.log(countries[0])
 
   useEffect(()=>{
     if(input.length > 0){
@@ -79,12 +82,20 @@ export default function App() {
     event.preventDefault();
     const getInput= event.target.value;
     setInput(getInput);
+    const filtered = states.filter(state => state.name.toLowerCase().includes(getInput.toLowerCase()));
+    setFilteredStates(filtered);
   }
 
   function handleSubmit(event){
     event.preventDefault();
     setState(input)
     setInput('')
+    setFilteredStates([]);
+  }
+
+  function handleSelectState(state) {
+    setInput(state.name);
+    setFilteredStates([]);
   }
 
   return (
@@ -100,21 +111,11 @@ export default function App() {
               <Header />
               <Form className="searchBar" onSubmit={handleSubmit}>
                 <Form.Control type="text" placeholder="Search State" name="state" value={input} autoComplete="off" onChange={(e)=>handleChange(e)}/>
-                {/* {serchbarLength && ( */}
-                   {/* <div className="filterList"> */}
-                    {/* {states.map((state, index)=>{return (
-                      <p className="filterListText">{state}</p>
-                    )})} */}
-                  {/* <p className="filterListText">Bangkok</p> */}
-                  {/* <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p>
-                  <p className="filterListText">Bangkok</p> */}
-                {/* </div> */}
-                {/* )} */}
+                {filteredStates.length>0 && (
+                   <div className="filterList">
+                    {filteredStates.map((state, index) => <p className="filterListText" onClick={() => handleSelectState(state)} key={index}>{state.name}</p>)}
+                </div>
+                )}
                 <button className={`go-btn ${serchbarLength ? 'go-btn-on' : ''}`}>
                   <p>GO</p>
                 </button>
