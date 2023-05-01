@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
 
+
+
 export const Info = (props) => {
     const [selected, setSelected] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("°C");
@@ -28,7 +30,9 @@ export const Info = (props) => {
     
     return (
         <>
-            <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@4x.png"} className="weather-pic" />
+            <div className="weatherIconWrapper">
+                <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@4x.png"} className="weather-pic" />
+            </div>
             <p className="country">{props.country}</p>
             <div className='temp-box'>
                 <p className="temp">{roundNum} {selectedUnit}</p>
