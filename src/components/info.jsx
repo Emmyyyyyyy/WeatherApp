@@ -3,16 +3,17 @@ import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import chevron from "../static/images/down-chevron.png"
 
-
-
 export const Info = (props) => {
     const [selected, setSelected] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("°C");
     const [roundNum, setRoundNum] = useState(0);
-    const [weatherIcon, setWeatherIcon] = useState('');
+    // const [weatherIcon, setWeatherIcon] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [src, setSrc] = useState("");
+
 
     useEffect(()=>{
-        setWeatherIcon(props.weatherIcon)
         if(selectedUnit === "°C") {
             setRoundNum(Math.round((props.temp) * 10) / 10)
         }
@@ -22,16 +23,34 @@ export const Info = (props) => {
         else if(selectedUnit === "°F") {
             setRoundNum(Math.round(((props.temp+(9/5))+32) * 10) / 10)
         }
-    }, [selectedUnit, props.weatherIcon, props.temp])
+    }, [selectedUnit, props.temp])
+
+    useEffect(() => {
+        const img = new Image();
+        img.src = `https://openweathermap.org/img/wn/${props.weatherIcon}@4x.png`;
+        img.onload = () => {
+          setLoading(false);
+          setError(false);
+          setSrc(img.src);
+        };
+        img.onerror = () => {
+          setLoading(false);
+          setError(true);
+        };
+    }, [props.weatherIcon]);
 
     const handlerSelect = (eventKey) => {
         setSelectedUnit(eventKey);
     }
-    
+
     return (
         <>
-            <div className="weatherIconWrapper">
-                <img src={"https://openweathermap.org/img/wn/" + weatherIcon + "@4x.png"} className="weather-pic" />
+            <div className="weatherIconWrapper" style={{ visibility: error ? "hidden" : "" }}>
+                {loading ? (
+                    <span class="loader"></span>
+                    ):(
+                    <img src={src} alt="Weather Icon" className="weather-pic"/>
+                )}
             </div>
             <p className="country">{props.country}</p>
             <div className='temp-box'>
